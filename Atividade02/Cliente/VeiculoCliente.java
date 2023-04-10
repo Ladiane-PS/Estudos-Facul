@@ -8,68 +8,101 @@ import java.util.List;
 import java.util.Scanner;
 
 public class VeiculoCliente  {
-    public static void main(String[] args) throws Exception {
-        // Localiza o servidor no serviço de nomes RMI Registry
-        
-       
-Registry registry = LocateRegistry.getRegistry();
+        public static void main(String[] args) throws Exception {
+        Registry registry = LocateRegistry.getRegistry();
         VeiculoInterface stub = (VeiculoInterface) registry.lookup("ClassificadosVeiculos");
 
-        // Cria um objeto Scanner para leitura de entrada do usuário
         Scanner scanner = new Scanner(System.in);
 
-        // Loop do menu principal do cliente
         while (true) {
             System.out.println("\n=== MENU PRINCIPAL ===");
-            System.out.println("1. Pesquisar por ano");
-            System.out.println("2. Adicionar veículo");
+            System.out.println("1. Pesquisar veículos por ano");
+            System.out.println("2. Adicionar novo veículo");
             System.out.println("3. Sair");
 
-            // Lê a opção selecionada pelo usuário
-            System.out.print("\nOpção: ");
-            int opcao = scanner.nextInt();
+            int opcao = 0;
 
-            // Executa a ação correspondente à opção selecionada
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opção inválida. Tente novamente.");
+                continue;
+            }
+
             switch (opcao) {
                 case 1:
-                    System.out.print("\nAno do veículo: ");
-                    int ano = scanner.nextInt();
+                    System.out.print("\nInforme o ano desejado: ");
 
-                    // Chama o método search2Ano no servidor para buscar veículos por ano
+                    int ano = 0;
+
+                    try {
+                        ano = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Ano inválido. Tente novamente.");
+                        continue;
+                    }
+
                     List<Veiculo> veiculos = stub.search2Ano(ano);
 
-                    // Exibe os resultados da busca
                     if (veiculos.isEmpty()) {
-                        System.out.println("Nenhum veículo encontrado para o ano informado.");
+                        System.out.println("\nNenhum veículo encontrado para o ano informado.");
                     } else {
                         System.out.println("\nVeículos encontrados para o ano " + ano + ":");
+
                         for (Veiculo v : veiculos) {
                             System.out.println(v);
-                             break;
                         }
                     }
+
+                    break;
+
                 case 2:
-                    // Lê os dados do novo veículo a ser adicionado
+                    System.out.println("\n== Adicionar novo veículo ==");
+
                     System.out.print("\nNome do cliente: ");
-                    String nomeCliente = scanner.next();
+                    String nomeCliente = scanner.nextLine();
+
                     System.out.print("Marca do veículo: ");
-                    String marcaVeiculo = scanner.next();
-                    System.out.print("Valor de venda: ");
-                    double valorVenda = scanner.nextDouble();
-                    System.out.print("Ano do veículo: ");
-                    ano = scanner.nextInt();
+                    String marcaVeiculo = scanner.nextLine();
 
-                    // Cria um objeto Veiculo com os dados lidos
-                    Veiculo veiculo = new Veiculo(nomeCliente, marcaVeiculo, valorVenda, ano);
+                    double valorVenda = 0.0;
 
-                    // Chama o método add no servidor para adicionar o novo veículo
-                    stub.add(veiculo);
+                    while (true) {
+                        System.out.print("Valor de venda: ");
+
+                        try {
+                            valorVenda = Double.parseDouble(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Valor inválido. Tente novamente.");
+                        }
+                    }
+
+                    int anoVeiculo = 0;
+
+                    while (true) {
+                        System.out.print("Ano do veículo: ");
+
+                        try {
+                            anoVeiculo = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Ano inválido. Tente novamente.");
+                        }
+                    }
+
+                    Veiculo novoVeiculo = new Veiculo(nomeCliente, marcaVeiculo, valorVenda, anoVeiculo);
+
+                    stub.add(novoVeiculo);
 
                     System.out.println("\nVeículo adicionado com sucesso!");
+
                     break;
+
                 case 3:
                     System.out.println("\nEncerrando cliente...");
                     System.exit(0);
+
                 default:
                     System.out.println("\nOpção inválida. Tente novamente.");
             }

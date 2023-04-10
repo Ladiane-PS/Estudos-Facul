@@ -1,4 +1,5 @@
 package br.com.rmi.control;
+
 import java.io.Serializable;
 
 public class Veiculo implements Serializable{
