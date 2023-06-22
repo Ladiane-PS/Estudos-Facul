@@ -1,6 +1,6 @@
 # Atividade Avaliativa SD 2023 
 **Alunas:** Érica Santos Oliveira da Silva;
-        Ladiane Pinhiro Santana;
+        Ladiane Pinheiro Santana;
         Patrícia Pereira Costa
 
 ## Descrição do Projeto
