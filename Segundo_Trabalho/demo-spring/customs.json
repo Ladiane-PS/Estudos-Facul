@@ -1,0 +1,38 @@
+{
+  "tag": "tr",
+  "attributes": {
+    "th:each": "veiculo : ${veiculos}"
+  },
+  "children": [
+    {
+      "tag": "td",
+      "attributes": {
+        "th:text": "${veiculo.nomeCliente}"
+      }
+    },
+    {
+      "tag": "td",
+      "attributes": {
+        "th:text": "${veiculo.marcaModeloVeiculo}"
+      }
+    },
+    {
+      "tag": "td",
+      "attributes": {
+        "th:text": "${veiculo.anoModelo}"
+      }
+    },
+    {
+      "tag": "td",
+      "attributes": {
+        "th:text": "${veiculo.valorVenda}"
+      }
+    },
+    {
+      "tag": "td",
+      "attributes": {
+        "th:text": "${veiculo.dataPublicacao}"
+      }
+    }
+  ]
+}

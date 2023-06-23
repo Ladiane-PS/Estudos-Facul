@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Veículos</title>
+</head>
+<body>
+    <h1>Veículos</h1>
+    <table>
+        <tr>
+            <th>Nome do Cliente</th>
+            <th>Marca e Modelo do Veículo</th>
+            <th>Ano do Modelo</th>
+            <th>Valor de Venda</th>
+        </tr>
+        <tr th:each="veiculo : ${veiculos}">
+            <td th:text="${veiculo.nomeCliente}"></td>
+            <td th:text="${veiculo.marcaModeloVeiculo}"></td>
+            <td th:text="${veiculo.anoModelo}"></td>
+            <td th:text="${veiculo.valorVenda}"></td>
+        </tr>
+    </table>
+</body>
+</html>

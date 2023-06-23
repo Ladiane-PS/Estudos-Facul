@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Classificados de Veículos</title>
+</head>
+<body>
+    <h1>Classificados de Veículos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="veiculo : ${veiculos}">
+                <td th:text="${veiculo.marca}"></td>
+                <td th:text="${veiculo.modelo}"></td>
+                <td th:text="${veiculo.ano}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
