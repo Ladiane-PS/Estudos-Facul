@@ -5,4 +5,11 @@
 Este repositório contém o trabalho da disciplina de Sistemas Distribuídos realizada no Instituto Federal do Pará (IFPA). 
 Este trabalho foi desenvolvido como parte das atividades acadêmicas do curso.
 
+## Participação
+
+[Ladiane P Santana](https://github.com/Ladiane-PS)
+
+[Erica](https://github.com/EricaSOS)
+
+
 
